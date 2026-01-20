@@ -51,9 +51,9 @@ export default function Dashboard() {
       </div>
 
       <div className="feature-card animated-card" style={{ textAlign: "left" }}>
-        <h3>🚀 StartKaro – An AI-Powered Student Innovation Platform</h3>
+        <h3>🚀 AURA – An AI-Powered Student Innovation Platform</h3>
         <p style={{ marginTop: "10px", lineHeight: "1.6" }}>
-          StartKaro is not just a project management platform — it is an AI-powered mentor ecosystem designed to help students think, build, and launch real-world ideas. The platform brings together projects, startups, freelancing, learning resources, and AI mentorship into one unified experience.
+          AURA is not just a project management platform — it is an AI-powered mentor ecosystem designed to help students think, build, and launch real-world ideas. The platform brings together projects, startups, freelancing, learning resources, and AI mentorship into one unified experience.
         </p>
 
         <h4 style={{ marginTop: "20px", color: "#4f6ef7" }}>🔍 Problem Statement</h4>
@@ -66,7 +66,7 @@ export default function Dashboard() {
         </ul>
 
         <p style={{ marginTop: "15px", fontStyle: "italic", color: "var(--text-muted)" }}>
-          Most platforms either focus only on learning or only on projects. StartKaro bridges this gap by combining execution, guidance, and intelligence.
+          Most platforms either focus only on learning or only on projects. AURA bridges this gap by combining execution, guidance, and intelligence.
         </p>
       </div>
 

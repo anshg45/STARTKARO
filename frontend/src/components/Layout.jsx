@@ -32,7 +32,7 @@ export default function Layout() {
       <Outlet />
 
       <footer className="footer">
-        © 2026 StartKaro • Built for students
+        © 2026 AURA • Association for Unleashing Research & Advancement
       </footer>
     </>
   );

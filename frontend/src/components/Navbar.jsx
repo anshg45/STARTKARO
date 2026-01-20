@@ -12,7 +12,7 @@ export default function Navbar() {
       <div className="nav-inner container">
         {/* Logo */}
         <Link to="/" className="logo">
-          🚀 StartKaro
+          🌟 AURA
         </Link>
 
         {/* Links */}

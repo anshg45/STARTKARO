@@ -10,7 +10,7 @@ export default function Events() {
   const DUMMY_EVENTS = [
     {
       _id: "e1",
-      title: "StartKaro Hackathon 2026",
+      title: "AURA Hackathon 2026",
       description: "A 48-hour national level hackathon.",
       date: "2026-03-15",
       location: "Main Auditorium, DTU"

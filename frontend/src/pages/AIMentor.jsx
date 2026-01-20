@@ -28,7 +28,7 @@ export default function AIMentor() {
         <div className="ai-mentor-header">
           <div className="ai-mentor-icon">🤖</div>
           <div>
-            <h1 className="page-title">StartKaro AI Mentor</h1>
+            <h1 className="page-title">AURA AI Mentor</h1>
             <p>Describe your doubt in simple words and get a guided answer.</p>
           </div>
         </div>

@@ -51,7 +51,7 @@ export default function Signup() {
     <div className="auth-container">
       <div className="auth-box">
         <div className="auth-header">
-          <h2>Join StartKaro 🚀</h2>
+          <h2>Join AURA 🚀</h2>
           <p>Create an account to start building</p>
         </div>
 
