@@ -46,15 +46,19 @@ app.get("/api/test-inline", (req, res) => {
   res.json({ message: "Inline route working" });
 });
 
+app.get("/", (req, res) => res.send("Backend is running! 🚀"));
 app.get("/test", (req, res) => res.send("Server is working"));
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`🚀 Backend running on port ${PORT}`);
+});
 
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("✅ MongoDB connected");
-    const PORT = process.env.PORT || 5000;
-    app.listen(PORT, () => {
-      console.log(`🚀 Backend running on port ${PORT}`);
-    });
   })
-  .catch(console.error);
+  .catch((err) => {
+    console.error("❌ MongoDB Connection Error:", err);
+  });
