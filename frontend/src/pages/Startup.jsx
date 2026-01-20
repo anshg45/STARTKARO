@@ -1,0 +1,55 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import api from "../services/api";
+import Card from "../components/Card";
+
+export default function Startup() {
+  const [startups, setStartups] = useState([]);
+
+  useEffect(() => {
+    fetchStartups();
+  }, []);
+
+  const fetchStartups = async () => {
+    try {
+      const res = await api.get("/startups");
+      setStartups(res.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  return (
+    <div className="container page-container" style={{ padding: "80px 0" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
+        <div>
+          <h1 className="page-title">🚀 Student Startups</h1>
+          <p>Discover startups built by students.</p>
+        </div>
+        <Link to="/startup/add" className="btn animated-btn">
+          + Register Startup
+        </Link>
+      </div>
+
+      <div className="feature-grid">
+        {startups.map((s) => (
+          <Card
+            key={s._id}
+            title={s.name}
+            subtitle={s.description}
+            tag={s.sector}
+            action="Contact Founder"
+            image={s.logo}
+            onAction={() => {
+              if (s.founder?.email) {
+                window.location.href = `mailto:${s.founder.email}?subject=Inquiry about ${s.name}`;
+              } else {
+                alert(`Founded by ${s.founder?.name || "Unknown"}`);
+              }
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
