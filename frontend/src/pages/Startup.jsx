@@ -47,6 +47,7 @@ export default function Startup() {
                 alert(`Founded by ${s.founder?.name || "Unknown"}`);
               }
             }}
+            onDelete={user?.role === "admin" ? () => handleDelete(s._id) : null}
           />
         ))}
       </div>

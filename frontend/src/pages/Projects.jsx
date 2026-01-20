@@ -5,12 +5,27 @@ import Card from "../components/Card";
 
 export default function Projects() {
   const [projects, setProjects] = useState([]);
+  const { user } = useAuth();
 
   useEffect(() => {
+    fetchProjects();
+  }, []);
+
+  const fetchProjects = () => {
     api.get("/projects").then((res) => {
       setProjects(res.data);
     });
-  }, []);
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await api.delete(`/projects/${id}`);
+      setProjects(projects.filter((p) => p._id !== id));
+      alert("Project deleted successfully!");
+    } catch (err) {
+      alert("Failed to delete project");
+    }
+  };
 
   return (
     <div className="container page-container" style={{ padding: "80px 0" }}>

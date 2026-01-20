@@ -8,7 +8,8 @@ export default function Card({
   tag,
   action,
   onAction,
-  image
+  image,
+  ...props // ✅ Accept extra props like onDelete
 }) {
   const navigate = useNavigate();
 
