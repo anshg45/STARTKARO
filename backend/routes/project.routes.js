@@ -1,6 +1,7 @@
 import express from "express";
 import Project from "../models/Project.js";
 import auth from "../middleware/auth.js";
+import { admin } from "../middleware/admin.middleware.js";
 import upload from "../middleware/upload.js";
 
 const router = express.Router();
@@ -47,6 +48,19 @@ router.get("/my", auth, async (req, res) => {
     res.json(projects);
   } catch (err) {
     res.status(500).json({ message: "Fetch projects failed" });
+  }
+});
+
+// ✅ DELETE PROJECT (Admin Only)
+router.delete("/:id", auth, admin, async (req, res) => {
+  try {
+    const project = await Project.findById(req.params.id);
+    if (!project) return res.status(404).json({ message: "Project not found" });
+
+    await project.deleteOne();
+    res.json({ message: "Project deleted successfully" });
+  } catch (err) {
+    res.status(500).json({ message: "Delete failed" });
   }
 });
 

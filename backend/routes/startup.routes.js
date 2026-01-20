@@ -39,4 +39,17 @@ router.post("/", auth, upload.single("logo"), async (req, res) => {
   }
 });
 
+// DELETE a startup (Admin Only)
+router.delete("/:id", auth, admin, async (req, res) => {
+  try {
+    const startup = await Startup.findById(req.params.id);
+    if (!startup) return res.status(404).json({ message: "Startup not found" });
+
+    await startup.deleteOne();
+    res.json({ message: "Startup deleted successfully" });
+  } catch (err) {
+    res.status(500).json({ message: "Delete failed" });
+  }
+});
+
 export default router;
