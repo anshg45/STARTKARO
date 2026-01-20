@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import api from "../services/api";
 import Card from "../components/Card";
 
 export default function Startup() {
   const [startups, setStartups] = useState([]);
+  const { user } = useAuth();
 
   useEffect(() => {
     fetchStartups();
