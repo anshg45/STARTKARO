@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useAuth } from "../context/AuthContext";
 import api from "../services/api";
 import Card from "../components/Card";
 
@@ -61,6 +62,7 @@ export default function Projects() {
               }
               window.open(url, "_blank");
             }}
+            onDelete={(user?.role === "admin" || user?.email === "admin@startkaro.com") ? () => handleDelete(p._id) : null}
           />
         ))}
       </div>

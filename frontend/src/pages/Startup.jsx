@@ -19,6 +19,16 @@ export default function Startup() {
     }
   };
 
+  const handleDelete = async (id) => {
+    try {
+      await api.delete(`/startups/${id}`);
+      setStartups(startups.filter((s) => s._id !== id));
+      alert("Startup deleted successfully!");
+    } catch (err) {
+      alert("Failed to delete startup");
+    }
+  };
+
   return (
     <div className="container page-container" style={{ padding: "80px 0" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
