@@ -11,8 +11,8 @@ export default function Navbar() {
       {/* container SECOND me */}
       <div className="nav-inner container">
         {/* Logo */}
-        <Link to="/" className="logo">
-          🌟 AURA
+        <Link to="/" className="logo" style={{ textDecoration: "none" }}>
+          <Logo variant="horizontal" />
         </Link>
 
         {/* Links */}
