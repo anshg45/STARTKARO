@@ -7,7 +7,7 @@ export default function Layout() {
       <nav className="navbar">
         <div className="container nav-inner">
           <Link to="/" className="logo" style={{ textDecoration: "none" }}>
-            <Logo variant="horizontal" />
+            <AuraLogo variant="horizontal" />
           </Link>
 
           <div className="nav-links">

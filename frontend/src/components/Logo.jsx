@@ -1,4 +1,4 @@
-export default function Logo({ variant = "vertical" }) {
+export default function AuraLogo({ variant = "vertical" }) {
   const isHorizontal = variant === "horizontal";
 
   return (

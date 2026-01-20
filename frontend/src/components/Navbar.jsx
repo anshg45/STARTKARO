@@ -13,7 +13,7 @@ export default function Navbar() {
       <div className="nav-inner container">
         {/* Logo */}
         <Link to="/" className="logo" style={{ textDecoration: "none" }}>
-          <Logo variant="horizontal" />
+          <AuraLogo variant="horizontal" />
         </Link>
 
         {/* Links */}
