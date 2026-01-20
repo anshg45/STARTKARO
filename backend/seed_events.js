@@ -19,7 +19,7 @@ const seedEvents = async () => {
 
     const events = [
       {
-        title: "StartKaro Hackathon 2026",
+        title: "AURA Hackathon 2026",
         description: "A 48-hour national level hackathon where students build innovative solutions for real-world problems. Prizes worth ₹1 Lakh!",
         date: new Date("2026-03-15"),
         location: "Main Auditorium, Delhi Tech University",

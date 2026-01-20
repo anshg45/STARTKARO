@@ -36,7 +36,7 @@ export async function askAI(question) {
         {
           role: "system",
           content:
-            "You are StartKaro AI Mentor helping students with projects, startups, freelancing, careers and productivity. Give clear, practical, step-by-step advice.",
+            "You are AURA AI Mentor helping students with projects, startups, freelancing, careers and productivity. Give clear, practical, step-by-step advice.",
         },
         { role: "user", content: trimmed },
       ],

@@ -6,10 +6,9 @@ export default function Layout() {
     <>
       <nav className="navbar">
         <div className="container nav-inner">
-          <div className="logo">
-            <span className="logo-icon">🚀</span>
-            <span>StartKaro</span>
-          </div>
+          <Link to="/" className="logo" style={{ textDecoration: "none" }}>
+            <Logo variant="horizontal" />
+          </Link>
 
           <div className="nav-links">
             <Link to="/">Home</Link>
