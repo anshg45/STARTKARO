@@ -43,12 +43,20 @@ export default function Guide() {
               if (g.file) {
                 window.open(g.file, "_blank");
               } else {
-                alert(g.content);
+                setSelectedGuide(g);
               }
             }}
           />
         ))}
       </div>
+
+      <Modal
+        isOpen={!!selectedGuide}
+        onClose={() => setSelectedGuide(null)}
+        title={selectedGuide?.title || "Guide"}
+      >
+        {selectedGuide && <ReactMarkdown>{selectedGuide.content}</ReactMarkdown>}
+      </Modal>
     </div>
   );
 }
