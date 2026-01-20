@@ -1,17 +1,17 @@
 :root {
-  --primary: #6366f1;
-  --bg: #0f172a;
-  --surface: #1e293b;
-  --text: #f8fafc;
-  --text-muted: #94a3b8;
-  --border: #334155;
+  --primary: #f97316;
+  --bg: #121212;
+  --surface: rgba(30, 30, 30, 0.6);
+  --text: #ffffff;
+  --text-muted: #a3a3a3;
+  --border: rgba(255, 255, 255, 0.1);
 }
 
 /* ================= BASE ================= */
 body {
   margin: 0;
   font-family: Inter, Poppins, sans-serif;
-  background: var(--bg);
+  background: linear-gradient(135deg, #121212 0%, #1a1a1a 100%);
   color: var(--text);
 }
 
@@ -88,14 +88,16 @@ body {
 .nav-links a {
   margin: 0 14px;
   font-weight: 500;
-  color: #374151;
+  color: var(--text-muted);
   text-decoration: none;
   cursor: pointer;
+  transition: color 0.2s;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
   color: var(--primary);
+  text-shadow: 0 0 10px rgba(249, 115, 22, 0.5);
 }
 
 .nav-actions {
@@ -106,7 +108,7 @@ body {
 
 /* ================= HERO ================= */
 .hero {
-  background: linear-gradient(180deg, #f8fafc, #f1f5f9);
+  background: radial-gradient(circle at 50% 50%, #2a2a2a 0%, #121212 100%);
   min-height: calc(100vh - 72px);
   display: flex;
   align-items: center;
@@ -124,6 +126,9 @@ body {
   font-size: 68px;
   line-height: 1.05;
   margin-bottom: 22px;
+  background: linear-gradient(to right, #ffffff, #a3a3a3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero-text span {

@@ -1,18 +1,20 @@
 :root {
-  --primary: #6366f1;
-  --bg: #0f172a;
-  --surface: #1e293b;
-  --text: #f8fafc;
-  --text-muted: #94a3b8;
-  --border: #334155;
-  --dark: #f8fafc; /* Remap old var to light for compatibility if used elsewhere as text color */
+  --primary: #f97316; /* Bright Orange from the image reference */
+  --bg: #121212; /* Deep Black background */
+  --surface: rgba(30, 30, 30, 0.6); /* Glassmorphic surface */
+  --text: #ffffff; /* Pure white text for contrast */
+  --text-muted: #a3a3a3; /* Light grey for secondary text */
+  --border: rgba(255, 255, 255, 0.1); /* Subtle white border */
+  --dark: #ffffff; /* Remap old dark var to white */
+  --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Glass shadow */
 }
 
 body {
   margin: 0;
   font-family: Inter, Poppins, sans-serif;
-  background: var(--bg);
+  background: linear-gradient(135deg, #121212 0%, #1a1a1a 100%);
   color: var(--text);
+  min-height: 100vh;
 }
 
 .btn {
