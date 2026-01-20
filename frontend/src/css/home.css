@@ -158,12 +158,15 @@ body {
 .glass-card {
   padding: 26px 34px;
   border-radius: 18px;
-  background: rgba(255,255,255,0.8);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 18px 44px rgba(0,0,0,0.12);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   font-weight: 600;
   font-size: 16px;
   transition: transform 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text);
 }
 
 .glass-card:hover {
@@ -226,11 +229,15 @@ body {
 }
 
 .stat-card {
-  background: white;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   padding: 26px;
   border-radius: 18px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   font-size: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text);
 }
 
 .stat-card b {
@@ -340,7 +347,7 @@ body {
 /* ================= AI MENTOR ================= */
 .ai-mentor-page {
   min-height: calc(100vh - 72px);
-  background: radial-gradient(circle at top left, #eef2ff, #f5f7fb 55%);
+  background: radial-gradient(circle at top left, #2a2a2a, #121212 55%);
   padding: 80px 0;
 }
 

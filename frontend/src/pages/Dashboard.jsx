@@ -65,7 +65,7 @@ export default function Dashboard() {
           <li>Access to the right resources at the right time</li>
         </ul>
 
-        <p style={{ marginTop: "15px", fontStyle: "italic", color: "#666" }}>
+        <p style={{ marginTop: "15px", fontStyle: "italic", color: "var(--text-muted)" }}>
           Most platforms either focus only on learning or only on projects. StartKaro bridges this gap by combining execution, guidance, and intelligence.
         </p>
       </div>

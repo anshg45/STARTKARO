@@ -40,7 +40,7 @@ export default function Home() {
               { label: "🛒 Rent & Buy", path: "/marketplace" },
               { label: "📅 Events", path: "/events" },
               { label: "📘 Guides", path: "/guide" },
-              { label: "🤖 AI Mentor", path: "/ai-mentor", style: { gridColumn: "span 2", background: "rgba(255, 255, 255, 0.95)" } },
+              { label: "🤖 AI Mentor", path: "/ai-mentor", style: { gridColumn: "span 2" } },
             ].map((item) => (
               <div
                 key={item.label}

@@ -131,7 +131,7 @@
 .auth-footer {
   margin-top: 25px;
   font-size: 14px;
-  color: #666;
+  color: var(--text-muted);
 }
 
 .auth-link {
