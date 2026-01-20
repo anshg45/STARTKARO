@@ -53,6 +53,26 @@ export default function Card({
           {action}
         </button>
       )}
+
+      {props.onDelete && (
+        <button
+          className="btn animated-btn"
+          style={{ 
+            backgroundColor: "#ff4444", 
+            color: "white", 
+            marginTop: "10px",
+            width: "100%"
+          }}
+          onClick={(e) => {
+            e.stopPropagation();
+            if (window.confirm("Are you sure you want to delete this item?")) {
+              props.onDelete();
+            }
+          }}
+        >
+          🗑️ Delete
+        </button>
+      )}
     </div>
   );
 }
