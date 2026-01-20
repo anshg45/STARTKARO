@@ -40,7 +40,7 @@ export default function Dashboard() {
 
   return (
     <div className="container page-container">
-      <h1 className="page-title">Welcome to StartKaro 🚀</h1>
+      <h1 className="page-title">Welcome to AURA 🌟</h1>
       
       <div className="dashboard-stats">
         <div className="stat-card animated-card">Projects <b>{stats.projects}</b></div>
