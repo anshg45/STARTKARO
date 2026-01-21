@@ -109,8 +109,9 @@ export default function Marketplace() {
     try {
       await api.delete(`/marketplace/${id}`);
       fetchListings();
+      alert("Listing deleted successfully!");
     } catch (err) {
-      alert("Failed to delete");
+      alert(err.response?.data?.message || "Failed to delete listing");
     }
   };
 

@@ -24,7 +24,7 @@ export default function Projects() {
       setProjects(projects.filter((p) => p._id !== id));
       alert("Project deleted successfully!");
     } catch (err) {
-      alert("Failed to delete project");
+      alert(err.response?.data?.message || "Failed to delete project");
     }
   };
 

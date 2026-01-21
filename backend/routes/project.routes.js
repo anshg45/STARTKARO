@@ -1,5 +1,6 @@
 import express from "express";
 import Project from "../models/Project.js";
+import User from "../models/User.js";
 import auth from "../middleware/auth.js";
 import { admin } from "../middleware/admin.middleware.js";
 import upload from "../middleware/upload.js";
@@ -62,8 +63,12 @@ router.delete("/:id", auth, async (req, res) => {
     const project = await Project.findById(req.params.id);
     if (!project) return res.status(404).json({ message: "Project not found" });
 
+    // Fetch full user details to ensure we have the email/role
+    const requestUser = await User.findById(req.user.id);
+    if (!requestUser) return res.status(401).json({ message: "User not found" });
+
     // Check if user is owner or admin (or Super Admin by email)
-    if (project.user.toString() !== req.user.id && req.user.role !== "admin" && req.user.email !== "admin@startkaro.com") {
+    if (project.user.toString() !== req.user.id && requestUser.role !== "admin" && requestUser.email !== "admin@startkaro.com") {
       return res.status(403).json({ message: "Not authorized to delete this project" });
     }
 

@@ -27,7 +27,7 @@ export default function Startup() {
       setStartups(startups.filter((s) => s._id !== id));
       alert("Startup deleted successfully!");
     } catch (err) {
-      alert("Failed to delete startup");
+      alert(err.response?.data?.message || "Failed to delete startup");
     }
   };
 

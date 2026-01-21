@@ -19,6 +19,17 @@ export default function Freelance() {
     }
   };
 
+  const handleDelete = async (id) => {
+    if (!window.confirm("Are you sure?")) return;
+    try {
+      await api.delete(`/freelance/${id}`);
+      setGigs(gigs.filter((g) => g._id !== id));
+      alert("Gig deleted successfully!");
+    } catch (err) {
+      alert(err.response?.data?.message || "Failed to delete gig");
+    }
+  };
+
   return (
     <div className="container page-container" style={{ padding: "80px 0" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
