@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
 // ✅ CREATE PROJECT
 router.post("/", auth, upload.single("image"), async (req, res) => {
   try {
-    const { title, description, githubUrl } = req.body; // ✅ INSIDE function
+    const { title, description, githubUrl, members, positions, whatsapp, linkedin, githubProfile } = req.body;
     let image = req.body.image;
 
     if (req.file) {
@@ -30,6 +30,11 @@ router.post("/", auth, upload.single("image"), async (req, res) => {
       title,
       description,
       githubUrl,
+      members,
+      positions,
+      whatsapp,
+      linkedin,
+      githubProfile,
       image,
       user: req.user.id,
     });

@@ -6,6 +6,9 @@ const freelanceSchema = new mongoose.Schema(
     description: String,
     skills: [String],
     budget: String,
+    whatsapp: String,
+    linkedin: String,
+    githubProfile: String,
     client: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",

@@ -47,7 +47,7 @@ router.get("/my", auth, async (req, res) => {
 // CREATE a listing
 router.post("/", auth, upload.single("image"), async (req, res) => {
   try {
-    const { title, description, price, category, type } = req.body;
+    const { title, description, price, category, type, whatsapp, linkedin, githubProfile } = req.body;
     let image = req.body.image; // Allow manual URL if needed
 
     if (req.file) {
@@ -61,6 +61,9 @@ router.post("/", auth, upload.single("image"), async (req, res) => {
       price,
       category,
       type,
+      whatsapp,
+      linkedin,
+      githubProfile,
       image,
       owner: req.user.id
     });

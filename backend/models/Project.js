@@ -7,6 +7,11 @@ const projectSchema = new mongoose.Schema(
     tech: [String],
     githubUrl: String,
     image: String, // Screenshot
+    members: { type: Number, default: 1 },
+    positions: String, // e.g. "Frontend Dev, UI Designer"
+    whatsapp: String,
+    linkedin: String,
+    githubProfile: String,
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",

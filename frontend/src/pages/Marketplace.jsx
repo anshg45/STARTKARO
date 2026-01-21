@@ -12,6 +12,9 @@ export default function Marketplace() {
     price: "",
     category: "Electronics",
     type: "Rent",
+    whatsapp: "",
+    linkedin: "",
+    githubProfile: "",
     image: null
   });
 
@@ -71,6 +74,9 @@ export default function Marketplace() {
       data.append("price", formData.price);
       data.append("category", formData.category);
       data.append("type", formData.type);
+      data.append("whatsapp", formData.whatsapp);
+      data.append("linkedin", formData.linkedin);
+      data.append("githubProfile", formData.githubProfile);
       if (formData.image) {
         data.append("image", formData.image);
       }
@@ -247,7 +253,7 @@ export default function Marketplace() {
               <h3 style={{ margin: "10px 0 5px" }}>{item.title}</h3>
               <p style={{ fontSize: 14, color: "#666", marginBottom: 10 }}>{item.description}</p>
               
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "10px" }}>
                 <b style={{ fontSize: 18 }}>{item.price}</b>
                 {activeTab === "My Listings" ? (
                   <button 
@@ -258,19 +264,39 @@ export default function Marketplace() {
                     Remove
                   </button>
                 ) : (
-                  <button 
-                    className="btn secondary animated-btn" 
-                    style={{ padding: "5px 10px", fontSize: 12 }}
-                    onClick={() => {
-                      if (item.owner?.email) {
-                        window.location.href = `mailto:${item.owner.email}?subject=Interested in ${item.title}`;
-                      } else {
-                        alert("Owner contact details not available.");
-                      }
-                    }}
-                  >
-                    Contact Owner
-                  </button>
+                  <div style={{ display: "flex", gap: "5px", flexWrap: "wrap" }}>
+                    <button 
+                      className="btn secondary animated-btn" 
+                      style={{ padding: "5px 10px", fontSize: 12 }}
+                      onClick={() => {
+                        if (item.owner?.email) {
+                          window.location.href = `mailto:${item.owner.email}?subject=Interested in ${item.title}`;
+                        } else {
+                          alert("Owner contact details not available.");
+                        }
+                      }}
+                    >
+                      Email
+                    </button>
+                    {item.whatsapp && (
+                      <button 
+                        className="btn ghost animated-btn" 
+                        style={{ padding: "5px 10px", fontSize: 12 }}
+                        onClick={() => window.open(`https://wa.me/${item.whatsapp.replace(/\D/g, "")}`, "_blank")}
+                      >
+                        WhatsApp
+                      </button>
+                    )}
+                    {item.linkedin && (
+                      <button 
+                        className="btn ghost animated-btn" 
+                        style={{ padding: "5px 10px", fontSize: 12 }}
+                        onClick={() => window.open(item.linkedin, "_blank")}
+                      >
+                        LinkedIn
+                      </button>
+                    )}
+                  </div>
                 )}
               </div>
             </div>

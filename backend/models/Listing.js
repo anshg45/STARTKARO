@@ -6,9 +6,11 @@ const listingSchema = new mongoose.Schema(
     description: { type: String, required: true },
     price: { type: String, required: true }, // e.g. "₹500/day" or "₹1200"
     category: { type: String, required: true }, // Electronics, Books, etc.
-    type: { type: String, enum: ["Rent", "Buy"], required: true },
-    image: { type: String }, // URL to image
-    status: { type: String, enum: ["Available", "Rented", "Sold"], default: "Available" },
+    type: { type: String, enum: ["Rent", "Buy"], default: "Rent" },
+    image: String,
+    whatsapp: String,
+    linkedin: String,
+    githubProfile: String,
     owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",

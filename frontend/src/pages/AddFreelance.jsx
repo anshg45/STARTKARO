@@ -53,6 +53,23 @@ export default function AddFreelance() {
           onChange={(e) => setSkills(e.target.value)}
         />
 
+        <h3>Contact Details (Compulsory)</h3>
+        <input
+          placeholder="WhatsApp Number"
+          value={whatsapp}
+          onChange={(e) => setWhatsapp(e.target.value)}
+        />
+        <input
+          placeholder="LinkedIn Profile URL"
+          value={linkedin}
+          onChange={(e) => setLinkedin(e.target.value)}
+        />
+        <input
+          placeholder="GitHub Profile URL"
+          value={githubProfile}
+          onChange={(e) => setGithubProfile(e.target.value)}
+        />
+
         <textarea
           placeholder="Job Description"
           value={description}

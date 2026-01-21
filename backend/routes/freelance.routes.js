@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
 // CREATE a gig
 router.post("/", auth, async (req, res) => {
   try {
-    const { title, description, skills, budget } = req.body;
+    const { title, description, skills, budget, whatsapp, linkedin, githubProfile } = req.body;
     
     // Skills comes as string "React, Node" -> ["React", "Node"]
     const skillsArray = skills.split(",").map(s => s.trim());
@@ -27,6 +27,9 @@ router.post("/", auth, async (req, res) => {
       description,
       skills: skillsArray,
       budget,
+      whatsapp,
+      linkedin,
+      githubProfile,
       client: req.user.id
     });
     res.status(201).json(gig);

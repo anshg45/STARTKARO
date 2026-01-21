@@ -33,20 +33,79 @@ export default function Freelance() {
 
       <div className="feature-grid">
         {gigs.map((g) => (
-          <Card
+          <div
             key={g._id}
-            title={g.title}
-            subtitle={g.description}
-            tag={`₹${g.budget}`}
-            action="Apply Now"
-            onAction={() => {
-              if (g.client?.email) {
-                window.location.href = `mailto:${g.client.email}?subject=Application for ${g.title}`;
-              } else {
-                alert("Client contact not available.");
-              }
-            }}
-          />
+            className="feature-card animated-card"
+            style={{ display: "flex", flexDirection: "column", gap: "10px" }}
+          >
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "start" }}>
+              <h3 style={{ margin: 0 }}>{g.title}</h3>
+              <span className="badge">₹{g.budget}</span>
+            </div>
+
+            <p style={{ color: "#666", fontSize: "0.95rem" }}>{g.description}</p>
+
+            <div
+              style={{
+                background: "rgba(0,0,0,0.03)",
+                padding: "12px",
+                borderRadius: "8px",
+                fontSize: "0.9rem",
+              }}
+            >
+              <div style={{ marginBottom: "5px" }}>
+                <strong>🛠 Skills:</strong> {g.skills?.join(", ")}
+              </div>
+              <div>
+                <strong>👤 Posted by:</strong> {g.client?.name || "Unknown"}
+              </div>
+            </div>
+
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginTop: "auto" }}>
+              <button
+                className="btn primary"
+                style={{ flex: 1, fontSize: "0.8rem", padding: "8px" }}
+                onClick={() => {
+                  if (g.client?.email) {
+                    window.location.href = `mailto:${g.client.email}?subject=Application for ${g.title}`;
+                  }
+                }}
+              >
+                Apply (Email)
+              </button>
+
+              {g.whatsapp && (
+                <button
+                  className="btn ghost"
+                  style={{ flex: 1, fontSize: "0.8rem", padding: "8px" }}
+                  onClick={() => window.open(`https://wa.me/${g.whatsapp.replace(/\D/g, "")}`, "_blank")}
+                >
+                  WhatsApp
+                </button>
+              )}
+            </div>
+
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+              {g.linkedin && (
+                <button
+                  className="btn ghost"
+                  style={{ flex: 1, fontSize: "0.8rem", padding: "8px" }}
+                  onClick={() => window.open(g.linkedin, "_blank")}
+                >
+                  LinkedIn
+                </button>
+              )}
+              {g.githubProfile && (
+                <button
+                  className="btn ghost"
+                  style={{ flex: 1, fontSize: "0.8rem", padding: "8px" }}
+                  onClick={() => window.open(g.githubProfile, "_blank")}
+                >
+                  GitHub
+                </button>
+              )}
+            </div>
+          </div>
         ))}
       </div>
     </div>

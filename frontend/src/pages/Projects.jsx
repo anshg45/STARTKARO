@@ -48,22 +48,104 @@ export default function Projects() {
 
       <div className="feature-grid">
         {projects.map((p) => (
-          <Card
+          <div
             key={p._id}
-            title={p.title}
-            subtitle={p.description}
-            tag="Project"
-            action="View Repo"
-            image={p.image}
-            onAction={() => {
-              let url = p.githubUrl;
-              if (url && !url.startsWith("http://") && !url.startsWith("https://")) {
-                url = "https://" + url;
-              }
-              window.open(url, "_blank");
-            }}
-            onDelete={(user?.role === "admin" || user?.email === "admin@startkaro.com") ? () => handleDelete(p._id) : null}
-          />
+            className="feature-card animated-card"
+            style={{ display: "flex", flexDirection: "column", gap: "10px" }}
+          >
+            {p.image && (
+              <img
+                src={p.image}
+                alt={p.title}
+                style={{
+                  width: "100%",
+                  height: "180px",
+                  objectFit: "cover",
+                  borderRadius: "8px",
+                }}
+              />
+            )}
+
+            <div>
+              <h3 style={{ marginBottom: "5px" }}>{p.title}</h3>
+              <p style={{ color: "#666", fontSize: "0.95rem" }}>{p.description}</p>
+            </div>
+
+            <div
+              style={{
+                background: "rgba(0,0,0,0.03)",
+                padding: "12px",
+                borderRadius: "8px",
+                fontSize: "0.9rem",
+              }}
+            >
+              <div style={{ marginBottom: "5px" }}>
+                <strong>👥 Members:</strong> {p.members || 1}
+              </div>
+              <div style={{ marginBottom: "5px" }}>
+                <strong>🔍 Looking for:</strong> {p.positions || "Open to all"}
+              </div>
+              <div>
+                <strong>👤 Created by:</strong> {p.user?.name || "Unknown"}
+              </div>
+            </div>
+
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginTop: "auto" }}>
+              <button
+                className="btn secondary"
+                style={{ flex: 1, fontSize: "0.8rem", padding: "8px" }}
+                onClick={() => window.open(p.githubUrl, "_blank")}
+              >
+                GitHub Repo
+              </button>
+
+              {p.whatsapp && (
+                <button
+                  className="btn ghost"
+                  style={{ flex: 1, fontSize: "0.8rem", padding: "8px" }}
+                  onClick={() => window.open(`https://wa.me/${p.whatsapp.replace(/\D/g, "")}`, "_blank")}
+                >
+                  WhatsApp
+                </button>
+              )}
+            </div>
+
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+              {p.linkedin && (
+                <button
+                  className="btn ghost"
+                  style={{ flex: 1, fontSize: "0.8rem", padding: "8px" }}
+                  onClick={() => window.open(p.linkedin, "_blank")}
+                >
+                  LinkedIn
+                </button>
+              )}
+              {p.githubProfile && (
+                <button
+                  className="btn ghost"
+                  style={{ flex: 1, fontSize: "0.8rem", padding: "8px" }}
+                  onClick={() => window.open(p.githubProfile, "_blank")}
+                >
+                  Creator Profile
+                </button>
+              )}
+            </div>
+
+            {(user?.role === "admin" || user?.email === "admin@startkaro.com") && (
+              <button
+                className="btn animated-btn"
+                style={{
+                  backgroundColor: "#ff4444",
+                  color: "white",
+                  marginTop: "10px",
+                  width: "100%",
+                }}
+                onClick={() => handleDelete(p._id)}
+              >
+                🗑️ Delete Project
+              </button>
+            )}
+          </div>
         ))}
       </div>
     </div>

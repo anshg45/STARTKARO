@@ -45,9 +45,41 @@ export default function AddProject() {
         />
 
         <input
-          placeholder="GitHub Repository URL"
+          placeholder="GitHub Repository URL (Project)"
           value={githubUrl}
           onChange={(e) => setGithubUrl(e.target.value)}
+        />
+
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
+          <input
+            type="number"
+            placeholder="Team Size (Members)"
+            min="1"
+            value={members}
+            onChange={(e) => setMembers(e.target.value)}
+          />
+          <input
+            placeholder="Open Positions (e.g. Frontend, UI)"
+            value={positions}
+            onChange={(e) => setPositions(e.target.value)}
+          />
+        </div>
+
+        <h3>Contact Details (Compulsory)</h3>
+        <input
+          placeholder="Your Name / GitHub Profile URL"
+          value={githubProfile}
+          onChange={(e) => setGithubProfile(e.target.value)}
+        />
+        <input
+          placeholder="WhatsApp Number"
+          value={whatsapp}
+          onChange={(e) => setWhatsapp(e.target.value)}
+        />
+        <input
+          placeholder="LinkedIn Profile URL"
+          value={linkedin}
+          onChange={(e) => setLinkedin(e.target.value)}
         />
 
         <input
