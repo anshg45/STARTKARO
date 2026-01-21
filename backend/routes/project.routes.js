@@ -56,11 +56,16 @@ router.get("/my", auth, async (req, res) => {
   }
 });
 
-// ✅ DELETE PROJECT (Admin Only)
-router.delete("/:id", auth, admin, async (req, res) => {
+// ✅ DELETE PROJECT (Owner or Admin)
+router.delete("/:id", auth, async (req, res) => {
   try {
     const project = await Project.findById(req.params.id);
     if (!project) return res.status(404).json({ message: "Project not found" });
+
+    // Check if user is owner or admin (or Super Admin by email)
+    if (project.user.toString() !== req.user.id && req.user.role !== "admin" && req.user.email !== "admin@startkaro.com") {
+      return res.status(403).json({ message: "Not authorized to delete this project" });
+    }
 
     await project.deleteOne();
     res.json({ message: "Project deleted successfully" });

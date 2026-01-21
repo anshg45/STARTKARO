@@ -39,11 +39,16 @@ router.post("/", auth, upload.single("logo"), async (req, res) => {
   }
 });
 
-// DELETE a startup (Admin Only)
-router.delete("/:id", auth, admin, async (req, res) => {
+// DELETE a startup (Owner or Admin)
+router.delete("/:id", auth, async (req, res) => {
   try {
     const startup = await Startup.findById(req.params.id);
     if (!startup) return res.status(404).json({ message: "Startup not found" });
+
+    // Check if user is founder or admin (or Super Admin by email)
+    if (startup.founder.toString() !== req.user.id && req.user.role !== "admin" && req.user.email !== "admin@startkaro.com") {
+      return res.status(403).json({ message: "Not authorized to delete this startup" });
+    }
 
     await startup.deleteOne();
     res.json({ message: "Startup deleted successfully" });

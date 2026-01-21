@@ -75,13 +75,17 @@ router.post("/", auth, upload.single("image"), async (req, res) => {
   }
 });
 
-// DELETE a listing
+// DELETE a listing (Owner or Admin)
 router.delete("/:id", auth, async (req, res) => {
   try {
-    const listing = await Listing.findOne({ _id: req.params.id, owner: req.user.id });
-    if (!listing) {
-      return res.status(404).json({ message: "Listing not found or unauthorized" });
+    const listing = await Listing.findById(req.params.id);
+    if (!listing) return res.status(404).json({ message: "Listing not found" });
+
+    // Check if user is owner or admin (or Super Admin by email)
+    if (listing.owner.toString() !== req.user.id && req.user.role !== "admin" && req.user.email !== "admin@startkaro.com") {
+      return res.status(403).json({ message: "Not authorized to delete this listing" });
     }
+
     await listing.deleteOne();
     res.json({ message: "Listing deleted" });
   } catch (err) {
