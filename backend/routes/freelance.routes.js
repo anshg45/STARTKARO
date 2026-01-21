@@ -53,10 +53,15 @@ router.delete("/:id", auth, async (req, res) => {
     // Check if user is client or admin (or Super Admin by email/name)
     const isOwner = gig.client.toString() === req.user.id;
     const isAdmin = requestUser.role === "admin";
-    const isSuperAdmin = requestUser.email.toLowerCase().trim() === "admin@startkaro.com";
+    const isSuperAdmin = 
+      requestUser.email.toLowerCase().trim() === "admin@startkaro.com" || 
+      (req.user.email && req.user.email.toLowerCase().trim() === "admin@startkaro.com");
 
     if (!isOwner && !isAdmin && !isSuperAdmin) {
-      return res.status(403).json({ message: `Not authorized. You are: ${requestUser.email}` });
+      return res.status(403).json({ 
+        message: `Not authorized. You are: ${requestUser.email}`,
+        debug: { userEmail: requestUser.email, tokenEmail: req.user.email }
+      });
     }
 
     await gig.deleteOne();

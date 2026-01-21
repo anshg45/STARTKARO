@@ -70,12 +70,17 @@ router.delete("/:id", auth, async (req, res) => {
     // Check if user is owner or admin (or Super Admin by email/name)
     const isOwner = project.user.toString() === req.user.id;
     const isAdmin = requestUser.role === "admin";
-    const isSuperAdmin = requestUser.email.toLowerCase().trim() === "admin@startkaro.com";
+    const isSuperAdmin = 
+      requestUser.email.toLowerCase().trim() === "admin@startkaro.com" || 
+      (req.user.email && req.user.email.toLowerCase().trim() === "admin@startkaro.com");
     
-    console.log(`Delete Debug: User=${requestUser.email}, Role=${requestUser.role}, IsOwner=${isOwner}, IsAdmin=${isAdmin}, IsSuperAdmin=${isSuperAdmin}`);
+    console.log(`Delete Debug: User=${requestUser.email}, TokenEmail=${req.user.email}, Role=${requestUser.role}, IsOwner=${isOwner}, IsAdmin=${isAdmin}, IsSuperAdmin=${isSuperAdmin}`);
 
     if (!isOwner && !isAdmin && !isSuperAdmin) {
-      return res.status(403).json({ message: `Not authorized. You are: ${requestUser.email} (${requestUser.role})` });
+      return res.status(403).json({ 
+        message: `Not authorized. You are: ${requestUser.email} (Role: ${requestUser.role})`,
+        debug: { userEmail: requestUser.email, tokenEmail: req.user.email, role: requestUser.role }
+      });
     }
 
     await project.deleteOne();
