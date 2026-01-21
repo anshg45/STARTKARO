@@ -6,13 +6,18 @@ export default function AddProject() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [githubUrl, setGithubUrl] = useState("");
+  const [members, setMembers] = useState(1);
+  const [positions, setPositions] = useState("");
+  const [whatsapp, setWhatsapp] = useState("");
+  const [linkedin, setLinkedin] = useState("");
+  const [githubProfile, setGithubProfile] = useState("");
   const [image, setImage] = useState(null);
 
   const navigate = useNavigate();
 
   const submit = async () => {
-    if (!title || !description || !githubUrl) {
-      alert("All fields required");
+    if (!title || !description || !githubUrl || !positions || !whatsapp || !linkedin || !githubProfile) {
+      alert("All fields including contact details are required!");
       return;
     }
 
@@ -21,6 +26,11 @@ export default function AddProject() {
       data.append("title", title);
       data.append("description", description);
       data.append("githubUrl", githubUrl);
+      data.append("members", members);
+      data.append("positions", positions);
+      data.append("whatsapp", whatsapp);
+      data.append("linkedin", linkedin);
+      data.append("githubProfile", githubProfile);
       if (image) data.append("image", image);
 
       await api.post("/projects", data, {

@@ -94,6 +94,9 @@ export default function Marketplace() {
         price: "",
         category: "Electronics",
         type: "Rent",
+        whatsapp: "",
+        linkedin: "",
+        githubProfile: "",
         image: null
       });
     } catch (err) {

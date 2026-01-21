@@ -7,12 +7,15 @@ export default function AddFreelance() {
   const [description, setDescription] = useState("");
   const [skills, setSkills] = useState("");
   const [budget, setBudget] = useState("");
+  const [whatsapp, setWhatsapp] = useState("");
+  const [linkedin, setLinkedin] = useState("");
+  const [githubProfile, setGithubProfile] = useState("");
 
   const navigate = useNavigate();
 
   const submit = async () => {
-    if (!title || !description || !skills || !budget) {
-      alert("All fields required");
+    if (!title || !description || !skills || !budget || !whatsapp || !linkedin || !githubProfile) {
+      alert("All fields including contact details are required");
       return;
     }
 
@@ -21,7 +24,10 @@ export default function AddFreelance() {
         title,
         description,
         skills,
-        budget
+        budget,
+        whatsapp,
+        linkedin,
+        githubProfile
       });
 
       navigate("/freelance");
