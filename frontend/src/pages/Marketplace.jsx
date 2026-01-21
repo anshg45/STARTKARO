@@ -258,7 +258,7 @@ export default function Marketplace() {
               
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "10px" }}>
                 <b style={{ fontSize: 18 }}>{item.price}</b>
-                {activeTab === "My Listings" ? (
+                {(activeTab === "My Listings" || user?.role === "admin" || user?.email === "admin@startkaro.com" || user?.id === item.owner?._id) ? (
                   <button 
                     className="animated-btn"
                     onClick={() => handleDelete(item._id)}

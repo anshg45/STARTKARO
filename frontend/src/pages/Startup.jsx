@@ -59,7 +59,7 @@ export default function Startup() {
                 alert(`Founded by ${s.founder?.name || "Unknown"}`);
               }
             }}
-            onDelete={(user?.role === "admin" || user?.email === "admin@startkaro.com") ? () => handleDelete(s._id) : null}
+            onDelete={(user?.role === "admin" || user?.email === "admin@startkaro.com" || user?.id === s.founder?._id) ? () => handleDelete(s._id) : null}
           />
         ))}
       </div>

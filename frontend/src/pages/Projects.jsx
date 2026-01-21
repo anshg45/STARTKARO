@@ -131,7 +131,7 @@ export default function Projects() {
               )}
             </div>
 
-            {(user?.role === "admin" || user?.email === "admin@startkaro.com") && (
+            {(user?.role === "admin" || user?.email === "admin@startkaro.com" || user?.id === p.user?._id) && (
               <button
                 className="btn animated-btn"
                 style={{

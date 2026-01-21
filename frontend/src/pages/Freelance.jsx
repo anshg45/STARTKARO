@@ -105,6 +105,21 @@ export default function Freelance() {
                 </button>
               )}
             </div>
+
+            {(user?.role === "admin" || user?.email === "admin@startkaro.com" || user?.id === g.client?._id) && (
+              <button
+                className="btn animated-btn"
+                style={{
+                  backgroundColor: "#ff4444",
+                  color: "white",
+                  marginTop: "10px",
+                  width: "100%",
+                }}
+                onClick={() => handleDelete(g._id)}
+              >
+                🗑️ Delete Gig
+              </button>
+            )}
           </div>
         ))}
       </div>
