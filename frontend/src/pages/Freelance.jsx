@@ -26,7 +26,10 @@ export default function Freelance() {
       setGigs(gigs.filter((g) => g._id !== id));
       alert("Gig deleted successfully!");
     } catch (err) {
-      alert(err.response?.data?.message || "Failed to delete gig");
+      console.error(err);
+      const msg = err.response?.data?.message || "Failed to delete gig";
+      const debug = err.response?.data?.debug ? JSON.stringify(err.response.data.debug) : "";
+      alert(`${msg} ${debug}`);
     }
   };
 

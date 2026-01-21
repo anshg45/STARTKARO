@@ -25,7 +25,9 @@ export default function Projects() {
       alert("Project deleted successfully!");
     } catch (err) {
       console.error(err);
-      alert(`Failed to delete project: ${err.response?.data?.message || err.message}`);
+      const msg = err.response?.data?.message || err.message;
+      const debug = err.response?.data?.debug ? JSON.stringify(err.response.data.debug) : "";
+      alert(`Failed to delete project: ${msg} ${debug}`);
     }
   };
 
