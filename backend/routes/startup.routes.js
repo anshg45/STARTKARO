@@ -50,9 +50,13 @@ router.delete("/:id", auth, async (req, res) => {
     const requestUser = await User.findById(req.user.id);
     if (!requestUser) return res.status(401).json({ message: "User not found" });
 
-    // Check if user is founder or admin (or Super Admin by email)
-    if (startup.founder.toString() !== req.user.id && requestUser.role !== "admin" && requestUser.email !== "admin@startkaro.com") {
-      return res.status(403).json({ message: "Not authorized to delete this startup" });
+    // Check if user is founder or admin (or Super Admin by email/name)
+    const isOwner = startup.founder.toString() === req.user.id;
+    const isAdmin = requestUser.role === "admin";
+    const isSuperAdmin = requestUser.email.toLowerCase().trim() === "admin@startkaro.com";
+
+    if (!isOwner && !isAdmin && !isSuperAdmin) {
+      return res.status(403).json({ message: `Not authorized. You are: ${requestUser.email}` });
     }
 
     await startup.deleteOne();
