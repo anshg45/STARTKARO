@@ -10,9 +10,16 @@
 /* ================= BASE ================= */
 body {
   margin: 0;
+  overflow-x: hidden;
   font-family: Inter, Poppins, sans-serif;
   background: linear-gradient(135deg, #121212 0%, #1a1a1a 100%);
   color: var(--text);
+}
+
+.navbar .container {
+  padding-left: 16px;
+  padding-right: 16px;
+  max-width: 100%;
 }
 
 .container {
