@@ -17,7 +17,7 @@ const teamMembers = [
     name: "Mansimaran Singh",
     role: "General Secretary",
     responsibility: "Manages operations, documentation, communication, and internal coordination.",
-    image: "/team/mansimaran.png",
+    image: "/team/mansimaran.jpg",
   },
   {
     name: "Simarpreet Singh",
@@ -29,7 +29,7 @@ const teamMembers = [
     name: "Pragya",
     role: "Data Analytics Lead",
     responsibility: "Handles data analysis, insights generation, and data-driven decision support.",
-    image: "/team/PRAGYA.png",
+    image: "/team/PRAGYA.jpg",
   },
   {
     name: "Ashmeet Kaur",
@@ -53,7 +53,7 @@ const teamMembers = [
     name: "Rishav",
     role: "DSA Lead",
     responsibility: "Focuses on algorithms, problem-solving, and coding efficiency.",
-    image: "/team/RISHAV.PNG",
+    image: "/team/RISHAV.jpg",
   },
   {
     name: "Harnoor Kaur",
@@ -65,7 +65,7 @@ const teamMembers = [
     name: "Aman Mishra",
     role: "Resources Lead",
     responsibility: "Handles learning resources, documentation, and knowledge sharing.",
-    image: "/team/AMAN.PNG",
+    image: "/team/AMAN.jpg",
   },
 ];
 
