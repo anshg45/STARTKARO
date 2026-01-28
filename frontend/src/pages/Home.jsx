@@ -34,28 +34,29 @@ export default function Home() {
 
           {/* RIGHT */}
           <div className="hero-visual">
-            {[
-              { label: "Projects", icon: "🚀", desc: "Showcase & Collaborate", path: "/projects" },
-              { label: "Startups", icon: "🦄", desc: "Build & Scale Ideas", path: "/startup" },
-              { label: "Freelance", icon: "💼", desc: "Earn & Gain Experience", path: "/freelance" },
-              { label: "Marketplace", icon: "🛒", desc: "Rent & Buy Gear", path: "/marketplace" },
-              { label: "Events", icon: "📅", desc: "Workshops & Hackathons", path: "/events" },
-              { label: "Guides", icon: "📘", desc: "Learn & Grow", path: "/guide" },
-              { label: "AI Mentor", icon: "🤖", desc: "Get Instant Help & Guidance", path: "/ai-mentor", style: { gridColumn: "span 2" } },
-            ].map((item) => (
-              <div
-                key={item.label}
-                className="hero-card animated-card"
-                onClick={() => navigate(item.path)}
-                style={item.style || {}}
-              >
-                <div className="hero-card-icon">{item.icon}</div>
-                <div>
-                  <div className="hero-card-title">{item.label}</div>
-                  <div className="hero-card-desc">{item.desc}</div>
-                </div>
-              </div>
-            ))}
+            <div className="hero-nav-grid">
+              <button onClick={() => navigate("/projects")} className="nav-card gradient-1">
+                <span className="nav-icon">🚀</span> Projects
+              </button>
+              <button onClick={() => navigate("/startup")} className="nav-card gradient-2">
+                <span className="nav-icon">🦄</span> Startups
+              </button>
+              <button onClick={() => navigate("/freelance")} className="nav-card gradient-3">
+                <span className="nav-icon">💼</span> Freelance
+              </button>
+              <button onClick={() => navigate("/marketplace")} className="nav-card gradient-4">
+                <span className="nav-icon">🛒</span> Marketplace
+              </button>
+              <button onClick={() => navigate("/events")} className="nav-card gradient-5">
+                <span className="nav-icon">📅</span> Events
+              </button>
+              <button onClick={() => navigate("/guide")} className="nav-card gradient-6">
+                <span className="nav-icon">📘</span> Guides
+              </button>
+              <button onClick={() => navigate("/ai-mentor")} className="nav-card gradient-7 full-width">
+                <span className="nav-icon">🤖</span> AI Mentor
+              </button>
+            </div>
           </div>
 
         </div>
