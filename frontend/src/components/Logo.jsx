@@ -3,28 +3,33 @@ export default function AuraLogo({ variant = "horizontal" }) {
   // If you haven't saved it yet, please save the image as 'aura-logo.png' in 'frontend/public/'
   
   return (
-    <div className="aura-logo-container" style={{ display: "flex", alignItems: "center" }}>
+    <div className="aura-logo-container" style={{ display: "flex", alignItems: "center", gap: "12px" }}>
       <img 
         src="/aura-logo.jpeg" 
         alt="AURA Logo" 
         style={{ 
-          height: variant === "horizontal" ? "50px" : "80px", // Adjust size based on variant
+          height: variant === "horizontal" ? "45px" : "80px", // Slightly adjusted size
           width: "auto",
           objectFit: "contain"
         }}
         onError={(e) => {
-          // Fallback to text/SVG if image is missing
           e.target.style.display = "none";
-          e.target.nextSibling.style.display = "flex";
+          // If image fails, we might want to show a fallback icon, but for now just hiding it
         }}
       />
       
-      {/* Fallback SVG/Text (Hidden if image loads) */}
-      <div style={{ display: "none", flexDirection: variant === "horizontal" ? "row" : "column", alignItems: "center", gap: "10px" }}>
-        <div style={{ fontSize: "24px", fontWeight: "900", letterSpacing: "2px", color: "var(--text)" }}>
-          AURA
-        </div>
+      {/* Always visible text */}
+      <div style={{ 
+        fontSize: "26px", 
+        fontWeight: "800", 
+        letterSpacing: "1.5px", 
+        color: "var(--text, #fff)", // Fallback to white if var not found
+        fontFamily: "'Inter', sans-serif"
+      }}>
+        AURA
       </div>
+
+      {/* Fallback SVG/Text container removed as we are now explicitly showing text next to image */ }
     </div>
   );
 }
