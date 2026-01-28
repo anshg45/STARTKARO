@@ -16,7 +16,13 @@ router.get("/stats", auth, async (req, res) => {
       Startup.countDocuments(),
       Freelance.countDocuments(),
       Event.countDocuments(),
-      User.countDocuments()
+      User.countDocuments({
+        role: { $ne: "admin" },
+        email: { 
+          $not: /^superadmin/i, 
+          $ne: "admin@startkaro.com" 
+        }
+      })
     ]);
 
     res.json({

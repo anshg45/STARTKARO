@@ -1,44 +1,36 @@
-import mongoose from "mongoose";
-import bcrypt from "bcryptjs";
-import dotenv from "dotenv";
-import User from "./models/User.js";
 
-dotenv.config();
+const API_URL = "http://localhost:5000/api";
 
-const verifyLogin = async () => {
+async function verifyLogin() {
   try {
-    await mongoose.connect(process.env.MONGO_URI);
-    console.log("Connected to DB...");
+    const email = "auramember50@startkaro.com";
+    const password = "aura2026_50";
 
-    const email = "student1@startkaro.com";
-    const password = "StartKaro@123";
+    console.log(`Attempting login with: ${email} / ${password}`);
 
-    const user = await User.findOne({ email });
-    if (!user) {
-      console.log("❌ User not found!");
-      process.exit(1);
+    const loginRes = await fetch(`${API_URL}/auth/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email,
+        password
+      })
+    });
+
+    if (!loginRes.ok) {
+        const errData = await loginRes.json();
+        console.error("Login Failed Response:", loginRes.status, errData);
+        throw new Error(`Login failed: ${loginRes.status} - ${errData.message || 'Unknown error'}`);
     }
 
-    console.log(`User found: ${user.email}`);
-    console.log(`Stored Hash: ${user.password}`);
+    const data = await loginRes.json();
+    console.log("✅ Login SUCCESS!");
+    console.log("Token received:", data.token ? "Yes" : "No");
+    console.log("User:", data.user);
 
-    const isMatch = await bcrypt.compare(password, user.password);
-    
-    if (isMatch) {
-      console.log("✅ Password MATCHES! Login should work.");
-    } else {
-      console.log("❌ Password DOES NOT match.");
-      
-      // Debug: Hash it again to see what it looks like
-      const newHash = await bcrypt.hash(password, 10);
-      console.log(`Expected Hash format (example): ${newHash}`);
-    }
-
-    process.exit();
   } catch (err) {
-    console.error(err);
-    process.exit(1);
+    console.error("❌ Error:", err.message);
   }
-};
+}
 
 verifyLogin();
