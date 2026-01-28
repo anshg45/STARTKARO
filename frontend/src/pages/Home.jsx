@@ -136,10 +136,10 @@ export default function Home() {
             <h3 style={{ fontSize: "1.5rem" }}>Challenging Yourself</h3>
             <p style={{ fontSize: "1rem" }}>Pushing boundaries through competitions and leadership roles.</p>
           </div>
-          <div className="feature-card animated-card" style={{ textAlign: "center", padding: "40px 30px" }}>
+          <div className="feature-card animated-card zoom-hidden delay-300" style={{ textAlign: "center", padding: "40px 30px" }}>
              <div style={{ fontSize: "40px", marginBottom: "20px" }}>🌱</div>
             <h3 style={{ fontSize: "1.5rem" }}>Growing Together</h3>
-            <p style={{ fontSize: "1rem" }}>Fostering personal, technical, and professional growth.</p>
+            <p style={{ fontSize: "1rem" }}>Sharing knowledge and growing as a unified force.</p>
           </div>
         </div>
         <div style={{ textAlign: "center", marginTop: "40px", maxWidth: "800px", margin: "40px auto 0", lineHeight: "1.8" }}>
