@@ -33,30 +33,27 @@ export default function Home() {
           </div>
 
           {/* RIGHT */}
-          <div className="hero-visual" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
+          <div className="hero-visual">
             {[
-              { label: "🚀 Projects", path: "/projects" },
-              { label: "🦄 Startups", path: "/startup" },
-              { label: "💼 Freelance", path: "/freelance" },
-              { label: "🛒 Rent & Buy", path: "/marketplace" },
-              { label: "📅 Events", path: "/events" },
-              { label: "📘 Guides", path: "/guide" },
-              { label: "🤖 AI Mentor", path: "/ai-mentor", style: { gridColumn: "span 2" } },
+              { label: "Projects", icon: "🚀", desc: "Showcase & Collaborate", path: "/projects" },
+              { label: "Startups", icon: "🦄", desc: "Build & Scale Ideas", path: "/startup" },
+              { label: "Freelance", icon: "💼", desc: "Earn & Gain Experience", path: "/freelance" },
+              { label: "Marketplace", icon: "🛒", desc: "Rent & Buy Gear", path: "/marketplace" },
+              { label: "Events", icon: "📅", desc: "Workshops & Hackathons", path: "/events" },
+              { label: "Guides", icon: "📘", desc: "Learn & Grow", path: "/guide" },
+              { label: "AI Mentor", icon: "🤖", desc: "Get Instant Help & Guidance", path: "/ai-mentor", style: { gridColumn: "span 2" } },
             ].map((item) => (
               <div
                 key={item.label}
-                className="glass-card animated-card"
+                className="hero-card animated-card"
                 onClick={() => navigate(item.path)}
-                style={{ 
-                  cursor: "pointer", 
-                  textAlign: "center", 
-                  display: "flex", 
-                  alignItems: "center", 
-                  justifyContent: "center",
-                  ...(item.style || {}) 
-                }}
+                style={item.style || {}}
               >
-                {item.label}
+                <div className="hero-card-icon">{item.icon}</div>
+                <div>
+                  <div className="hero-card-title">{item.label}</div>
+                  <div className="hero-card-desc">{item.desc}</div>
+                </div>
               </div>
             ))}
           </div>
@@ -65,28 +62,49 @@ export default function Home() {
       </section>
 
       {/* WHAT WE STAND FOR */}
-      <section className="container section" style={{ padding: "60px 0" }}>
-        <h2 className="section-title" style={{ textAlign: "center", marginBottom: "40px" }}>🚀 What We Stand For</h2>
-        <div className="feature-grid">
-          <div className="feature-card animated-card">
-            <h3>💡 Igniting Ideas</h3>
-            <p>Turning curiosity into innovation.</p>
+      <section className="container section" style={{ padding: "100px 0", position: "relative" }}>
+        {/* Background Blob */}
+        <div style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          width: "600px",
+          height: "600px",
+          background: "radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%)",
+          zIndex: -1,
+          pointerEvents: "none"
+        }}></div>
+
+        <h2 className="section-title" style={{ textAlign: "center", marginBottom: "60px", fontSize: "2.5rem" }}>
+          🚀 What We Stand For
+        </h2>
+        
+        <div className="feature-grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "30px" }}>
+          <div className="feature-card animated-card" style={{ textAlign: "center", padding: "40px 30px" }}>
+            <div style={{ fontSize: "40px", marginBottom: "20px" }}>💡</div>
+            <h3 style={{ fontSize: "1.5rem" }}>Igniting Ideas</h3>
+            <p style={{ fontSize: "1rem" }}>Turning curiosity into innovation through brainstorming and mentorship.</p>
           </div>
-          <div className="feature-card animated-card">
-            <h3>🤝 Building Bonds</h3>
-            <p>Strong collaboration, stronger community.</p>
+          <div className="feature-card animated-card" style={{ textAlign: "center", padding: "40px 30px" }}>
+             <div style={{ fontSize: "40px", marginBottom: "20px" }}>🤝</div>
+            <h3 style={{ fontSize: "1.5rem" }}>Building Bonds</h3>
+            <p style={{ fontSize: "1rem" }}>Creating a strong community of like-minded individuals.</p>
           </div>
-          <div className="feature-card animated-card">
-            <h3>🛠️ Learning by Doing</h3>
-            <p>Hands-on projects, real exposure.</p>
+          <div className="feature-card animated-card" style={{ textAlign: "center", padding: "40px 30px" }}>
+             <div style={{ fontSize: "40px", marginBottom: "20px" }}>🛠️</div>
+            <h3 style={{ fontSize: "1.5rem" }}>Learning by Doing</h3>
+            <p style={{ fontSize: "1rem" }}>Hands-on projects and real-world exposure over theory.</p>
           </div>
-          <div className="feature-card animated-card">
-            <h3>🏆 Challenging Yourself</h3>
-            <p>Competitions, research & leadership.</p>
+          <div className="feature-card animated-card" style={{ textAlign: "center", padding: "40px 30px" }}>
+             <div style={{ fontSize: "40px", marginBottom: "20px" }}>🏆</div>
+            <h3 style={{ fontSize: "1.5rem" }}>Challenging Yourself</h3>
+            <p style={{ fontSize: "1rem" }}>Pushing boundaries through competitions and leadership roles.</p>
           </div>
-          <div className="feature-card animated-card">
-            <h3>🌱 Growing Together</h3>
-            <p>Personal, technical, and professional growth.</p>
+          <div className="feature-card animated-card" style={{ textAlign: "center", padding: "40px 30px" }}>
+             <div style={{ fontSize: "40px", marginBottom: "20px" }}>🌱</div>
+            <h3 style={{ fontSize: "1.5rem" }}>Growing Together</h3>
+            <p style={{ fontSize: "1rem" }}>Fostering personal, technical, and professional growth.</p>
           </div>
         </div>
         <div style={{ textAlign: "center", marginTop: "40px", maxWidth: "800px", margin: "40px auto 0", lineHeight: "1.8" }}>
