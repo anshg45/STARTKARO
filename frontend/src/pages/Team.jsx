@@ -70,6 +70,72 @@ const teamMembers = [
 ];
 
 export default function Team() {
+  const president = teamMembers[0];
+  const executives = teamMembers.slice(1, 3);
+  const leads = teamMembers.slice(3);
+
+  const TeamCard = ({ member, style = {} }) => (
+    <div
+      className="feature-card"
+      style={{
+        textAlign: "center",
+        padding: "40px 20px",
+        transition: "transform 0.3s ease, box-shadow 0.3s ease",
+        cursor: "pointer",
+        ...style,
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = "translateY(-10px)";
+        e.currentTarget.style.boxShadow = "0 20px 40px rgba(0,0,0,0.4)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = "translateY(0)";
+        e.currentTarget.style.boxShadow = "none";
+      }}
+    >
+      <div
+        style={{
+          width: "120px",
+          height: "120px",
+          borderRadius: "50%",
+          overflow: "hidden",
+          margin: "0 auto 20px",
+          border: "4px solid rgba(255,255,255,0.1)",
+        }}
+      >
+        <img
+          src={member.image}
+          alt={member.name}
+          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+        />
+      </div>
+      <h3 style={{ marginBottom: "5px", fontSize: "1.5rem" }}>
+        {member.name}
+      </h3>
+      <p
+        style={{
+          color: "var(--primary)",
+          fontWeight: "600",
+          marginBottom: "15px",
+          textTransform: "uppercase",
+          fontSize: "0.9rem",
+          letterSpacing: "1px",
+        }}
+      >
+        {member.role}
+      </p>
+      <p
+        style={{
+          color: "var(--text-muted)",
+          fontSize: "0.95rem",
+          lineHeight: "1.5",
+        }}
+      >
+        {member.responsibility}
+      </p>
+    </div>
+  );
+
   return (
     <div className="container" style={{ padding: "80px 0" }}>
       {/* Header Section */}
@@ -111,7 +177,31 @@ export default function Team() {
         </p>
       </div>
 
-      {/* Team Grid */}
+      {/* 1. President */}
+      <div style={{ display: "flex", justifyContent: "center", marginBottom: "40px" }}>
+        <div style={{ maxWidth: "400px", width: "100%" }}>
+          <TeamCard member={president} />
+        </div>
+      </div>
+
+      {/* 2. VP & Gen Sec */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "30px",
+          flexWrap: "wrap",
+          marginBottom: "40px",
+        }}
+      >
+        {executives.map((member, index) => (
+          <div key={index} style={{ maxWidth: "350px", width: "100%" }}>
+            <TeamCard member={member} />
+          </div>
+        ))}
+      </div>
+
+      {/* 3. Leads */}
       <div
         style={{
           display: "grid",
@@ -119,67 +209,8 @@ export default function Team() {
           gap: "30px",
         }}
       >
-        {teamMembers.map((member, index) => (
-          <div
-            key={index}
-            className="feature-card"
-            style={{
-              textAlign: "center",
-              padding: "40px 20px",
-              transition: "transform 0.3s ease, box-shadow 0.3s ease",
-              cursor: "pointer",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "translateY(-10px)";
-              e.currentTarget.style.boxShadow =
-                "0 20px 40px rgba(0,0,0,0.4)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.boxShadow = "none";
-            }}
-          >
-            <div
-              style={{
-                width: "120px",
-                height: "120px",
-                borderRadius: "50%",
-                overflow: "hidden",
-                margin: "0 auto 20px",
-                border: "4px solid rgba(255,255,255,0.1)",
-              }}
-            >
-              <img
-                src={member.image}
-                alt={member.name}
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
-              />
-            </div>
-            <h3 style={{ marginBottom: "5px", fontSize: "1.5rem" }}>
-              {member.name}
-            </h3>
-            <p
-              style={{
-                color: "var(--primary)",
-                fontWeight: "600",
-                marginBottom: "15px",
-                textTransform: "uppercase",
-                fontSize: "0.9rem",
-                letterSpacing: "1px",
-              }}
-            >
-              {member.role}
-            </p>
-            <p
-              style={{
-                color: "var(--text-muted)",
-                fontSize: "0.95rem",
-                lineHeight: "1.5",
-              }}
-            >
-              {member.responsibility}
-            </p>
-          </div>
+        {leads.map((member, index) => (
+          <TeamCard key={index} member={member} />
         ))}
       </div>
 
