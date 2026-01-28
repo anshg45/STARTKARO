@@ -17,7 +17,7 @@ const teamMembers = [
     name: "Mansimaran Singh",
     role: "General Secretary",
     responsibility: "Manages operations, documentation, communication, and internal coordination.",
-    image: "https://ui-avatars.com/api/?name=Mansimaran+Singh&background=10b981&color=fff&size=200",
+    image: "/team/mansimaran.png",
   },
   {
     name: "Simarpreet Singh",
