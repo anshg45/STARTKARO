@@ -11,7 +11,7 @@ const teamMembers = [
     name: "Gian Kaur",
     role: "Vice President",
     responsibility: "Supports leadership decisions and ensures smooth coordination across teams.",
-    image: "https://ui-avatars.com/api/?name=Gian+Kaur&background=8b5cf6&color=fff&size=200",
+    image: "/team/gian.png",
   },
   {
     name: "Mansimaran Singh",
