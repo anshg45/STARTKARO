@@ -5,7 +5,7 @@ export default function AuraLogo({ variant = "horizontal" }) {
   return (
     <div className="aura-logo-container" style={{ display: "flex", alignItems: "center" }}>
       <img 
-        src="/aura-logo.png" 
+        src="/aura-logo.jpeg" 
         alt="AURA Logo" 
         style={{ 
           height: variant === "horizontal" ? "50px" : "80px", // Adjust size based on variant
