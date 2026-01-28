@@ -151,8 +151,7 @@ export default function Home() {
           </p>
           <div style={{ marginTop: "30px", fontStyle: "italic" }}>
             <p>Warm Regards</p>
-            <p><strong>Anshpreet Singh Bindra</strong></p>
-            <p>Founder / President, AURA</p>
+            <p><strong>Team AURA</strong></p>
           </div>
         </div>
       </section>
