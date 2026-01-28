@@ -257,11 +257,11 @@ body {
 .dashboard-tabs button {
   padding: 10px 22px;
   border-radius: 999px;
-  border: 1px solid #e5e7eb;
-  background: white;
+  border: 1px solid var(--border);
+  background: transparent;
   cursor: pointer;
   font-weight: 600;
-  color: var(--dark);
+  color: var(--text);
   transition: all 0.25s ease;
 }
 
@@ -281,9 +281,12 @@ body {
 .footer {
   text-align: center;
   padding: 32px 0;
-  background: #f8fafc;
-  color: var(--muted);
+  background: var(--surface);
+  color: var(--text-muted);
   font-size: 14px;
+  border-top: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 /* ================= RESPONSIVE ================= */
@@ -319,11 +322,14 @@ body {
 
 .auth-card {
   width: 380px;
-  background: white;
+  background: var(--surface);
   padding: 42px;
   border-radius: 24px;
-  box-shadow: 0 24px 60px rgba(0,0,0,0.12);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.5);
   text-align: center;
+  border: 1px solid var(--border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .auth-card input {
@@ -331,7 +337,9 @@ body {
   padding: 14px 16px;
   margin-bottom: 16px;
   border-radius: 12px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
 }
 
 .auth-link {
@@ -376,24 +384,26 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 28px;
-  background: white;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  background: var(--surface);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.3);
   animation: float 3s ease-in-out infinite;
+  border: 1px solid var(--border);
 }
 
 .ai-input-card {
-  background: white;
+  background: var(--surface);
   border-radius: 24px;
-  box-shadow: 0 24px 60px rgba(15,23,42,0.12);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.3);
   padding: 20px 24px 18px;
-  border: 1px solid rgba(148,163,184,0.25);
+  border: 1px solid var(--border);
   margin-bottom: 32px;
   transition: box-shadow 0.25s ease, transform 0.25s ease;
+  backdrop-filter: blur(16px);
 }
 
 .ai-input-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 28px 70px rgba(15,23,42,0.16);
+  box-shadow: 0 28px 70px rgba(0,0,0,0.4);
 }
 
 .ai-input {
@@ -401,17 +411,19 @@ body {
   min-height: 140px;
   resize: vertical;
   border-radius: 18px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border);
   padding: 14px 16px;
   font-size: 15px;
   font-family: inherit;
   outline: none;
   transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
 }
 
 .ai-input:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 0 1px rgba(79,110,247,0.05), 0 18px 40px rgba(79,110,247,0.22);
+  box-shadow: 0 0 0 1px rgba(79,110,247,0.05), 0 18px 40px rgba(0,0,0,0.22);
   transform: translateY(-1px);
 }
 
@@ -439,12 +451,15 @@ body {
 }
 
 .ai-answer-card {
-  background: white;
+  background: var(--surface);
   padding: 28px 30px;
   border-radius: 24px;
-  box-shadow: 0 24px 60px rgba(15,23,42,0.12);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.3);
   animation: fadeUp 0.35s ease-out;
   line-height: 1.7;
+  border: 1px solid var(--border);
+  backdrop-filter: blur(16px);
+  color: var(--text);
 }
 
 .ai-answer-card h1,
