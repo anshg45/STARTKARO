@@ -19,15 +19,42 @@ export default function Projects() {
   };
 
   const handleDelete = async (id) => {
+    console.log("Attempting to delete project with ID:", id);
+    if (!id) {
+      alert("Error: Project ID is missing!");
+      return;
+    }
+
     try {
-      await api.delete(`/projects/${id}`);
+      const res = await api.delete(`/projects/${id}`);
+      console.log("Delete response:", res);
       setProjects(projects.filter((p) => p._id !== id));
       alert("Project deleted successfully!");
     } catch (err) {
-      console.error(err);
-      const msg = err.response?.data?.message || err.message;
-      const debug = err.response?.data?.debug ? JSON.stringify(err.response.data.debug) : "";
-      alert(`Failed to delete project: ${msg} ${debug}`);
+      console.error("Delete Error:", err);
+      
+      let errorMessage = "Failed to delete project";
+      let debugInfo = "";
+
+      if (err.response) {
+        console.log("Error Response Data:", err.response.data);
+        console.log("Error Response Status:", err.response.status);
+
+        // Check if data is HTML (string) or JSON
+        if (typeof err.response.data === "string") {
+          errorMessage = `Server Error (${err.response.status})`;
+          debugInfo = "Server returned HTML/Text instead of JSON. Check console.";
+        } else {
+          errorMessage = err.response.data.message || errorMessage;
+          if (err.response.data.debug) {
+            debugInfo = JSON.stringify(err.response.data.debug);
+          }
+        }
+      } else {
+        errorMessage = err.message;
+      }
+
+      alert(`${errorMessage}\n\nDebug: ${debugInfo}`);
     }
   };
 

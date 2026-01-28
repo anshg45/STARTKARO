@@ -59,6 +59,8 @@ router.get("/my", auth, async (req, res) => {
 
 // ✅ DELETE PROJECT (Owner or Admin)
 router.delete("/:id", auth, async (req, res) => {
+  console.log(`[ROUTE HIT] DELETE /api/projects/${req.params.id}`);
+  
   try {
     console.log(`[DELETE DEBUG] Attempting to delete project with ID: '${req.params.id}'`);
     
