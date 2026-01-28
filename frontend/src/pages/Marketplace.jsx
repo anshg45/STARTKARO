@@ -112,9 +112,7 @@ export default function Marketplace() {
       alert("Listing deleted successfully!");
     } catch (err) {
       console.error(err);
-      const msg = err.response?.data?.message || "Failed to delete listing";
-      const debug = err.response?.data?.debug ? JSON.stringify(err.response.data.debug) : "";
-      alert(`${msg} ${debug}`);
+      alert(err.response?.data?.message || "Failed to delete listing");
     }
   };
 

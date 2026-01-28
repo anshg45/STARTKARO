@@ -59,8 +59,7 @@ router.delete("/:id", auth, async (req, res) => {
 
     if (!isOwner && !isAdmin && !isSuperAdmin) {
       return res.status(403).json({ 
-        message: `Not authorized. You are: ${requestUser.email} (Role: ${requestUser.role})`,
-        debug: { userEmail: requestUser.email, tokenEmail: req.user.email, role: requestUser.role, tokenRole: req.user.role }
+        message: "Not authorized to delete this startup"
       });
     }
 

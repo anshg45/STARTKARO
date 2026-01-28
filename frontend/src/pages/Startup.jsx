@@ -28,9 +28,7 @@ export default function Startup() {
       alert("Startup deleted successfully!");
     } catch (err) {
       console.error(err);
-      const msg = err.response?.data?.message || "Failed to delete startup";
-      const debug = err.response?.data?.debug ? JSON.stringify(err.response.data.debug) : "";
-      alert(`${msg} ${debug}`);
+      alert(err.response?.data?.message || "Failed to delete startup");
     }
   };
 

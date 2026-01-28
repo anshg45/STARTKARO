@@ -94,12 +94,9 @@ router.delete("/:id", auth, async (req, res) => {
       (requestUser.email && requestUser.email.toLowerCase().trim() === "admin@startkaro.com") || 
       (req.user.email && req.user.email.toLowerCase().trim() === "admin@startkaro.com");
     
-    console.log(`Delete Debug: User=${requestUser.email}, TokenEmail=${req.user.email}, Role=${requestUser.role}, TokenRole=${req.user.role}, IsOwner=${isOwner}, IsAdmin=${isAdmin}, IsSuperAdmin=${isSuperAdmin}`);
-
     if (!isOwner && !isAdmin && !isSuperAdmin) {
       return res.status(403).json({ 
-        message: `Not authorized. You are: ${requestUser.email} (Role: ${requestUser.role})`,
-        debug: { userEmail: requestUser.email, tokenEmail: req.user.email, role: requestUser.role, tokenRole: req.user.role }
+        message: "Not authorized to delete this project"
       });
     }
 
