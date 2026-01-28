@@ -19,6 +19,7 @@ export default function Navbar() {
         {/* Links */}
         <div className="nav-links">
           <Link to="/">Home</Link>
+          <Link to="/team">Team</Link>
           <Link to="/events">Events</Link>
 
           {user && (

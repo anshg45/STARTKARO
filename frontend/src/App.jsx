@@ -27,6 +27,7 @@ export default function App() {
       <Routes>
         {/* Public */}
         <Route path="/" element={<Home />} />
+        <Route path="/team" element={<Team />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/events" element={<Events />} />
