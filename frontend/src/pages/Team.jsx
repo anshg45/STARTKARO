@@ -155,6 +155,9 @@ export default function Team() {
         >
           Meet the Team
         </h1>
+        <p style={{ fontSize: "1.1rem", color: "var(--primary)", fontWeight: "600", marginTop: "-10px", marginBottom: "20px" }}>
+          Core Team 2025-2026
+        </p>
         <p
           style={{
             color: "var(--text-muted)",
