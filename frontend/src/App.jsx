@@ -18,6 +18,7 @@ import AddEvent from "./pages/AddEvent";
 import Guide from "./pages/Guide";
 import AddGuide from "./pages/AddGuide";
 import AIMentor from "./pages/AIMentor";
+import Team from "./pages/Team";
 
 export default function App() {
   return (
