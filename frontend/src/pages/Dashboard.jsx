@@ -16,6 +16,12 @@ export default function Dashboard() {
   const [passData, setPassData] = useState({ oldPassword: "", newPassword: "" });
   const [msg, setMsg] = useState("");
 
+  // New User State (Super Admin Only)
+  const [newUser, setNewUser] = useState({ name: "", email: "", password: "", role: "user" });
+  const [userMsg, setUserMsg] = useState("");
+
+  const isSuperAdmin = user?.role === "admin" || user?.email === "admin@startkaro.com" || user?.email?.toLowerCase().trim().startsWith("superadmin");
+
   useEffect(() => {
     const fetchStats = async () => {
       try {
@@ -37,6 +43,18 @@ export default function Dashboard() {
       setPassData({ oldPassword: "", newPassword: "" });
     } catch (err) {
       setMsg("❌ " + (err.response?.data?.message || "Failed to update password"));
+    }
+  };
+
+  const handleCreateUser = async (e) => {
+    e.preventDefault();
+    setUserMsg("");
+    try {
+      await api.post("/auth/create-user", newUser);
+      setUserMsg("✅ User created successfully!");
+      setNewUser({ name: "", email: "", password: "", role: "user" });
+    } catch (err) {
+      setUserMsg("❌ " + (err.response?.data?.message || "Failed to create user"));
     }
   };
 

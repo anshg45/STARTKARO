@@ -179,6 +179,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 28px;
+  justify-content: center; /* Center items if they don't fill the row */
 }
 
 .feature-card {

@@ -127,7 +127,7 @@ export default function Home() {
         </div>
 
         {/* VISION & MISSION GRID */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))", gap: "30px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))", gap: "30px", justifyContent: "center" }}>
           
           {/* VISION */}
           <div className="feature-card animated-card" style={{ 
