@@ -29,7 +29,7 @@ const teamMembers = [
     name: "Pragya",
     role: "Data Analytics Lead",
     responsibility: "Handles data analysis, insights generation, and data-driven decision support.",
-    image: "https://ui-avatars.com/api/?name=Pragya&background=ec4899&color=fff&size=200",
+    image: "/team/PRAGYA.png",
   },
   {
     name: "Ashmeet Kaur",
@@ -53,7 +53,7 @@ const teamMembers = [
     name: "Rishav",
     role: "DSA Lead",
     responsibility: "Focuses on algorithms, problem-solving, and coding efficiency.",
-    image: "https://ui-avatars.com/api/?name=Rishav&background=ef4444&color=fff&size=200",
+    image: "/team/RISHAV.PNG",
   },
   {
     name: "Harnoor Kaur",
@@ -65,7 +65,7 @@ const teamMembers = [
     name: "Aman Mishra",
     role: "Resources Lead",
     responsibility: "Handles learning resources, documentation, and knowledge sharing.",
-    image: "https://ui-avatars.com/api/?name=Aman+Mishra&background=06b6d4&color=fff&size=200",
+    image: "/team/AMAN.PNG",
   },
 ];
 
