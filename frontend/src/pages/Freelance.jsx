@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../services/api";
+import { useAuth } from "../context/AuthContext";
 import Card from "../components/Card";
 
 export default function Freelance() {
+  const { user } = useAuth();
   const [gigs, setGigs] = useState([]);
 
   useEffect(() => {
@@ -118,7 +120,7 @@ export default function Freelance() {
               )}
             </div>
 
-            {(user?.role === "admin" || user?.email === "admin@startkaro.com" || user?.id === g.client?._id) && (
+            {(user?.role === "admin" || user?.email === "admin@startkaro.com" || user?.email?.toLowerCase().trim().startsWith("superadmin") || user?.id === g.client?._id) && (
               <button
                 className="btn animated-btn"
                 style={{

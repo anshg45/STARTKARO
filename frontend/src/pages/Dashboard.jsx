@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { logout } from "../utils/auth";
 import api from "../services/api";
+import { useAuth } from "../context/AuthContext";
 
 export default function Dashboard() {
+  const { user } = useAuth();
   const [stats, setStats] = useState({
     projects: 0,
     startups: 0,
@@ -93,6 +95,56 @@ export default function Dashboard() {
         </form>
         {msg && <p style={{ marginTop: "10px", fontWeight: "bold" }}>{msg}</p>}
       </div>
+
+      {isSuperAdmin && (
+        <div className="feature-card animated-card" style={{ marginTop: "20px", textAlign: "left", border: "1px solid #6C63FF" }}>
+          <h3>🔑 Create New User (Super Admin Only)</h3>
+          <form onSubmit={handleCreateUser} style={{ marginTop: "15px", display: "flex", flexDirection: "column", gap: "10px" }}>
+            <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+              <input
+                type="text"
+                placeholder="Full Name"
+                className="input-field"
+                value={newUser.name}
+                onChange={(e) => setNewUser({ ...newUser, name: e.target.value })}
+                required
+                style={{ flex: 1 }}
+              />
+              <input
+                type="email"
+                placeholder="Email Address"
+                className="input-field"
+                value={newUser.email}
+                onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
+                required
+                style={{ flex: 1 }}
+              />
+            </div>
+            <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+              <input
+                type="password"
+                placeholder="Password"
+                className="input-field"
+                value={newUser.password}
+                onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
+                required
+                style={{ flex: 1 }}
+              />
+              <select
+                className="input-field"
+                value={newUser.role}
+                onChange={(e) => setNewUser({ ...newUser, role: e.target.value })}
+                style={{ flex: 1 }}
+              >
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+              </select>
+            </div>
+            <button type="submit" className="btn primary" style={{ alignSelf: "flex-start" }}>Create User</button>
+          </form>
+          {userMsg && <p style={{ marginTop: "10px", fontWeight: "bold" }}>{userMsg}</p>}
+        </div>
+      )}
 
       <br />
       <button className="btn secondary animated-btn" onClick={logout}>

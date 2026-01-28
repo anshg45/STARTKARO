@@ -105,41 +105,66 @@ export default function Home() {
       </section>
 
       {/* ABOUT US & VISION */}
-      <section className="container section" style={{ padding: "60px 0", background: "rgba(255,255,255,0.02)", borderRadius: "20px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px" }}>
-          <div>
-            <h2 style={{ marginBottom: "20px" }}>📄 About Us | AURA</h2>
-            <p style={{ marginBottom: "15px", lineHeight: "1.7" }}>
-              AURA – Association for Unleashing Research & Advancement is a student-led community dedicated to fostering innovation, research excellence, and hands-on learning. We believe true growth happens when ideas meet execution.
-            </p>
-            <p style={{ marginBottom: "15px", lineHeight: "1.7" }}>
-              At AURA, students are encouraged to question, explore, experiment, and build. Through research initiatives, technical projects, events, and collaborations, we create an ecosystem where learning goes beyond classrooms and transforms into real-world impact.
-            </p>
-            <p style={{ fontStyle: "italic", color: "var(--text-muted)" }}>
-              AURA is not just a society — it is a movement of thinkers, makers, and leaders working together to shape the future.
-            </p>
-          </div>
-          <div>
-            <h2 style={{ marginBottom: "20px" }}>📄 Vision & Mission | AURA</h2>
-            
-            <div style={{ marginBottom: "25px" }}>
-              <h3 style={{ fontSize: "1.3rem", color: "var(--primary)", marginBottom: "10px" }}>🌟 Our Vision</h3>
-              <p style={{ lineHeight: "1.7" }}>
-                To build a dynamic community where students become innovators, researchers, and change-makers, capable of solving real-world problems through knowledge, creativity, and collaboration.
-              </p>
-            </div>
+      <section className="container section" style={{ padding: "80px 0" }}>
+        
+        {/* ABOUT US */}
+        <div style={{ 
+          textAlign: "center", 
+          maxWidth: "800px", 
+          margin: "0 auto 80px", 
+          background: "linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%)",
+          padding: "40px",
+          borderRadius: "24px",
+          border: "1px solid var(--border)"
+        }}>
+          <div className="badge" style={{ marginBottom: "20px" }}>About Us</div>
+          <h2 style={{ fontSize: "2.5rem", marginBottom: "20px", lineHeight: "1.2" }}>
+            Unleashing Research & Advancement
+          </h2>
+          <p style={{ fontSize: "1.1rem", lineHeight: "1.8", color: "var(--text-muted)", marginBottom: "0" }}>
+            AURA is more than just a society—it’s a movement. We are a student-led community dedicated to fostering innovation, research excellence, and hands-on learning. We believe that true growth happens when ideas meet execution, and we are here to bridge that gap.
+          </p>
+        </div>
 
-            <div>
-              <h3 style={{ fontSize: "1.3rem", color: "var(--primary)", marginBottom: "10px" }}>🎯 Our Mission</h3>
-              <ul style={{ paddingLeft: "20px", lineHeight: "1.7" }}>
-                <li>To promote research-driven thinking and innovation</li>
-                <li>To encourage hands-on learning through projects and experimentation</li>
-                <li>To build a culture of collaboration, leadership, and excellence</li>
-                <li>To provide platforms for skill development, competitions, and exposure</li>
-                <li>To support students in transforming ideas into impactful outcomes</li>
-              </ul>
+        {/* VISION & MISSION GRID */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))", gap: "30px" }}>
+          
+          {/* VISION */}
+          <div className="feature-card animated-card" style={{ 
+            background: "linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(0,0,0,0) 100%)",
+            borderColor: "rgba(249, 115, 22, 0.3)"
+          }}>
+            <div style={{ 
+              width: "50px", height: "50px", background: "var(--primary)", borderRadius: "12px", 
+              display: "flex", alignItems: "center", justifyContent: "center", fontSize: "24px", marginBottom: "20px",
+              boxShadow: "0 10px 20px rgba(249, 115, 22, 0.3)"
+            }}>
+              🌟
             </div>
+            <h3 style={{ fontSize: "1.5rem", marginBottom: "15px" }}>Our Vision</h3>
+            <p style={{ lineHeight: "1.7", color: "var(--text-muted)" }}>
+              To build a dynamic community where students become innovators, researchers, and change-makers, capable of solving real-world problems through knowledge, creativity, and collaboration.
+            </p>
           </div>
+
+          {/* MISSION */}
+          <div className="feature-card animated-card">
+            <div style={{ 
+              width: "50px", height: "50px", background: "rgba(255,255,255,0.1)", borderRadius: "12px", 
+              display: "flex", alignItems: "center", justifyContent: "center", fontSize: "24px", marginBottom: "20px"
+            }}>
+              🎯
+            </div>
+            <h3 style={{ fontSize: "1.5rem", marginBottom: "15px" }}>Our Mission</h3>
+            <ul style={{ paddingLeft: "20px", lineHeight: "1.8", color: "var(--text-muted)" }}>
+              <li style={{ marginBottom: "8px" }}>Promote research-driven thinking & innovation</li>
+              <li style={{ marginBottom: "8px" }}>Encourage hands-on learning via projects</li>
+              <li style={{ marginBottom: "8px" }}>Build a culture of collaboration & leadership</li>
+              <li style={{ marginBottom: "8px" }}>Provide platforms for skill development</li>
+              <li>Support transforming ideas into impact</li>
+            </ul>
+          </div>
+
         </div>
       </section>
 

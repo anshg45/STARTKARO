@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import api from "../services/api";
 import Card from "../components/Card";
+import { useAuth } from "../context/AuthContext";
 
 export default function Events() {
   const [events, setEvents] = useState([]);
+  const { user } = useAuth();
 
   // Fallback Dummy Data
   const DUMMY_EVENTS = [
@@ -56,6 +58,18 @@ export default function Events() {
     }
   };
 
+  const handleDelete = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this event?")) return;
+    try {
+      await api.delete(`/events/${id}`);
+      setEvents(events.filter((e) => e._id !== id));
+      alert("Event deleted successfully!");
+    } catch (err) {
+      console.error(err);
+      alert(err.response?.data?.message || "Failed to delete event");
+    }
+  };
+
   return (
     <div className="container page-container" style={{ padding: "80px 0" }}>
       <div
@@ -88,6 +102,7 @@ export default function Events() {
             action="View Details"
             image={ev.image}
             onAction={() => alert(`Event: ${ev.title}\n\n${ev.description}\n\nLocation: ${ev.location}\nDate: ${new Date(ev.date).toDateString()}\n\nOrganizer: ${ev.organizer?.name || "Unknown"}`)}
+            onDelete={(user?.role === "admin" || user?.email === "admin@startkaro.com" || user?.email?.toLowerCase().trim().startsWith("superadmin") || user?.id === ev.organizer?._id) ? () => handleDelete(ev._id) : null}
           />
         ))}
       </div>

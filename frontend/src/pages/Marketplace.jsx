@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import api from "../services/api";
+import { useAuth } from "../context/AuthContext";
 // Animations imported globally in main.jsx
 
 export default function Marketplace() {
+  const { user } = useAuth();
   const [activeTab, setActiveTab] = useState("Rent"); // Rent, Buy, My Listings
   const [listings, setListings] = useState([]);
   const [showForm, setShowForm] = useState(false);
@@ -260,7 +262,7 @@ export default function Marketplace() {
               
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "10px" }}>
                 <b style={{ fontSize: 18 }}>{item.price}</b>
-                {(activeTab === "My Listings" || user?.role === "admin" || user?.email === "admin@startkaro.com" || user?.id === item.owner?._id) ? (
+                {(activeTab === "My Listings" || user?.role === "admin" || user?.email === "admin@startkaro.com" || user?.email?.toLowerCase().trim().startsWith("superadmin") || user?.id === item.owner?._id) ? (
                   <button 
                     className="animated-btn"
                     onClick={() => handleDelete(item._id)}

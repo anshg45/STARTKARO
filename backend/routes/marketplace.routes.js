@@ -80,8 +80,8 @@ router.delete("/:id", auth, async (req, res) => {
     const isOwner = listing.owner.toString() === req.user.id;
     const isAdmin = requestUser.role === "admin" || req.user.role === "admin";
     const isSuperAdmin = 
-      (requestUser.email && requestUser.email.toLowerCase().trim() === "admin@startkaro.com") || 
-      (req.user.email && req.user.email.toLowerCase().trim() === "admin@startkaro.com");
+      (requestUser.email && (requestUser.email.toLowerCase().trim() === "admin@startkaro.com" || requestUser.email.toLowerCase().trim().startsWith("superadmin"))) || 
+      (req.user.email && (req.user.email.toLowerCase().trim() === "admin@startkaro.com" || req.user.email.toLowerCase().trim().startsWith("superadmin")));
 
     if (!isOwner && !isAdmin && !isSuperAdmin) {
       return res.status(403).json({ 
