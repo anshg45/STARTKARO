@@ -60,8 +60,18 @@ router.get("/my", auth, async (req, res) => {
 // ✅ DELETE PROJECT (Owner or Admin)
 router.delete("/:id", auth, async (req, res) => {
   try {
+    console.log(`[DELETE DEBUG] Attempting to delete project with ID: '${req.params.id}'`);
+    
+    // Check for valid ObjectId format
+    if (!req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
+        console.log(`[DELETE DEBUG] Invalid ID format: '${req.params.id}'`);
+        return res.status(400).json({ message: "Invalid Project ID format" });
+    }
+
     const project = await Project.findById(req.params.id);
-    if (!project) return res.status(404).json({ message: "Project not found" });
+    console.log(`[DELETE DEBUG] Project found:`, project ? "YES" : "NO");
+
+    if (!project) return res.status(404).json({ message: "Project not found in database" });
 
     // Fetch full user details to ensure we have the email/role
     const requestUser = await User.findById(req.user.id);
