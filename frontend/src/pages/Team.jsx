@@ -17,7 +17,7 @@ const teamMembers = [
     name: "Mansimaran Singh",
     role: "General Secretary",
     responsibility: "Manages operations, documentation, communication, and internal coordination.",
-    image: "/team/mansimaran.jpg",
+    image: "/team/mansimaran.jpg?v=1",
   },
   {
     name: "Simarpreet Singh",
