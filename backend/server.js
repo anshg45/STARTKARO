@@ -49,6 +49,19 @@ app.get("/api/test-inline", (req, res) => {
 app.get("/", (req, res) => res.send("Backend is running! 🚀"));
 app.get("/test", (req, res) => res.send("Server is working"));
 
+// ✅ Global 404 Handler (Must be last)
+app.use((req, res, next) => {
+  console.log(`❌ Route not found: ${req.method} ${req.url}`);
+  res.status(404).json({
+    message: "Route not found",
+    debug: {
+      method: req.method,
+      url: req.url,
+      timestamp: new Date().toISOString()
+    }
+  });
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`🚀 Backend running on port ${PORT}`);

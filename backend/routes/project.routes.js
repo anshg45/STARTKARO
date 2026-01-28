@@ -7,6 +7,13 @@ import upload from "../middleware/upload.js";
 
 const router = express.Router();
 
+console.log("✅ Project Routes Loaded");
+
+router.use((req, res, next) => {
+  console.log(`[Project Routes] ${req.method} ${req.url}`);
+  next();
+});
+
 // ✅ GET ALL PROJECTS
 router.get("/", async (req, res) => {
   try {
@@ -59,18 +66,19 @@ router.get("/my", auth, async (req, res) => {
 
 // ✅ DELETE PROJECT (Owner or Admin)
 router.delete("/:id", auth, async (req, res) => {
-  console.log(`[ROUTE HIT] DELETE /api/projects/${req.params.id}`);
+  const projectId = req.params.id.trim();
+  console.log(`[ROUTE HIT] DELETE /api/projects/${projectId}`);
   
   try {
-    console.log(`[DELETE DEBUG] Attempting to delete project with ID: '${req.params.id}'`);
+    console.log(`[DELETE DEBUG] Attempting to delete project with ID: '${projectId}'`);
     
     // Check for valid ObjectId format
-    if (!req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
-        console.log(`[DELETE DEBUG] Invalid ID format: '${req.params.id}'`);
+    if (!projectId.match(/^[0-9a-fA-F]{24}$/)) {
+        console.log(`[DELETE DEBUG] Invalid ID format: '${projectId}'`);
         return res.status(400).json({ message: "Invalid Project ID format" });
     }
 
-    const project = await Project.findById(req.params.id);
+    const project = await Project.findById(projectId);
     console.log(`[DELETE DEBUG] Project found:`, project ? "YES" : "NO");
 
     if (!project) return res.status(404).json({ message: "Project not found in database" });
